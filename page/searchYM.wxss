@@ -1,0 +1,51 @@
+
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}
+
+.item {
+    width: 700rpx;
+    padding: 25rpx 0;
+    line-height: 10vh;
+    font-size: 2rem;
+}
+
+.list {
+  border-bottom: 2px solid seagreen;
+  border-top: 2px solid seagreen;
+  color: seagreen;
+  margin-bottom: 4px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 50%;
+  line-height:4vh;
+}
+
+.btn {
+  margin: 20rpx 25rpx;
+}
+
+.hidden {
+  display: none;
+}
+
+.first {
+  border-radius: 0;
+}
+
+.error {
+  border-bottom: 2px solid deeppink;
+  border-top: 2px solid deeppink;
+  color: deeppink;
+}
+
+.result {
+  color: black;
+  font-size:1rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+

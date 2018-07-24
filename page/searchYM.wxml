@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="checkItems" catchreset="resetCheck">
+      <view class="page-section">
+        <view class="page-section-title {{!isChecking? '' :'result'}}">{{msg}}</view>
+
+        <view class="{{!isChecking ? '' : 'hidden'}}">
+          <view class="textarea-wrp">
+            <textarea name="values" auto-height class='item' placeholder='201607050-2' ></textarea>
+          </view>
+          <button class='btn' type="primary" formType="submit">查询</button>
+
+          <text class="page-section-title" bindtap="showImg"> 哪里查看批号？</text>
+          <image class="btn {{showImg ? '' : 'hidden'}}" src="../image/ym.png"></image>
+        </view>
+
+        <view class="{{!isChecking ? 'hidden' : ''}}">
+          <scroll-view scroll-y='true' class="textarea-wrp">
+          <block wx:for-items="{{list}}" wx:key="item"> 
+            <view class="item list {{item.isException? 'error' : 'ok'}} {{index? '' :'first'}}">
+               <text selectable='true'>{{item.key}}</text> 
+            </view>
+          </block>
+        </scroll-view>
+        <button class='btn' type="primary" formType="reset">再查查</button>
+
+        <text class="page-section-title">信息持续更新...</text>
+        <view>
+          <block wx:for-items="{{errorList}}" wx:key="item"> 
+            <text class="page-section-title">{{item}}</text>
+          </block>
+        </view>
+      </view>
+ 
+      </view>  
+  </form>
+  </view>
+</view>
