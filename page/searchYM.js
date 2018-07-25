@@ -32,18 +32,45 @@ Page({
     });
   },
 
+  checkRule: function (keys) {
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i].trim();
+      if (!/^[\@A-Z0-9\-]{6,12}$/i.test(key)) {
+        return false;
+      }      
+    }
+
+    return true;
+  },
   checkItems: function (e) {
     var $this = this;
     var form = e.detail.value;
     var keys = form.values.split(/[\n]/);
-    var list = [],
-        count = 0, 
-        pass = 0;
+    var list = [], pass = 0;
+
+    if (form.values == "") {
+      wx.showModal({
+        title: "温馨提示",
+        content: "什么都没有输入呢~",
+        showCancel: false,
+        confirmText: "确定"
+      });
+      return;
+    }  
+
+    if (!$this.checkRule(keys)) {
+      wx.showModal({
+        title: "提示",
+        content: "要输入规范的疫苗批号哦~",
+        showCancel: false,
+        confirmText: "确定"
+      });
+      return;
+    }
 
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i].trim();
-      if (key) {
-        count++;
+      if (key) {        
         var isException = config.ErrorMap[key];
         if (isException===undefined)
           isException = false
@@ -54,17 +81,7 @@ Page({
           isException: isException
         });
       }
-    }
-
-    if (!count) {
-      wx.showModal({
-        title: "温馨提示",
-        content: "哥，什么都没输入呢",
-        showCancel: false,
-        confirmText: "确定"
-      });
-      return;
-    }    
+    }  
     
     var isPass = pass == count;
     var msgs = isPass ? config.OkMsg : config.ErrorMsg,
