@@ -11,6 +11,10 @@
     font-size: 2rem;
 }
 
+textarea {
+    min-height: 10vh;
+}
+
 .list {
   border-bottom: 2px solid seagreen;
   border-top: 2px solid seagreen;
@@ -47,5 +51,14 @@
   text-align: center;
 }
 
+.center {
+  width: 100vw;
+  text-align:center;
+}
 
+.canvas-box {
+  position: fixed;
+  top: 999999rpx;
+  left: 0;
+}
 

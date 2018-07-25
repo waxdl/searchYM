@@ -16,23 +16,31 @@
 
         <view class="{{!isChecking ? 'hidden' : ''}}">
           <scroll-view scroll-y='true' class="textarea-wrp">
-          <block wx:for-items="{{list}}" wx:key="item"> 
-            <view class="item list {{item.isException? 'error' : 'ok'}} {{index? '' :'first'}}">
-               <text selectable='true'>{{item.key}}</text> 
-            </view>
-          </block>
-        </scroll-view>
-        <button class='btn' type="primary" formType="reset">再查查</button>
-
-        <text class="page-section-title">信息持续更新...</text>
-        <view>
-          <block wx:for-items="{{errorList}}" wx:key="item"> 
-            <text class="page-section-title">{{item}}</text>
-          </block>
+            <block wx:for-items="{{list}}" wx:key="item"> 
+              <view class="item list {{item.isException? 'error' : 'ok'}} {{index? '' :'first'}}">
+                <text selectable='true'>{{item.key}}</text> 
+              </view>
+            </block>
+          </scroll-view>
+          <button class='btn' type="primary" formType="reset">再查查</button>
+          <button class='btn' type="primary" bindtap="shareResult">分享结果到朋友圈</button>
+          <text class="page-section-title">信息持续更新...</text>
+          <view>
+            <block wx:for-items="{{errorList}}" wx:key="item"> 
+              <text class="page-section-title">{{item}}</text>
+            </block>
+          </view>       
+          <view class='canvas-box'>             
+            <canvas canvas-id='share' 
+                    style="width:750rpx; height:940rpx;" 
+                    hidden='{{canvasHidden}}'>
+            </canvas>
+          </view>
+        </view>
+        <view class='center'>
+          <image src="../image/qrcode.png"></image>
         </view>
       </view>
- 
-      </view>  
-  </form>
+    </form>
   </view>
 </view>
