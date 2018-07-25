@@ -35,7 +35,7 @@ Page({
   checkRule: function (keys) {
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i].trim();
-      if (!/^[\@A-Z0-9\-]{6,12}$/i.test(key)) {
+      if (!/^[\A-Z0-9\-]{6,12}$/.test(key)) {
         return false;
       }      
     }
@@ -46,7 +46,9 @@ Page({
     var $this = this;
     var form = e.detail.value;
     var keys = form.values.split(/[\n]/);
-    var list = [], pass = 0;
+    var list = [], 
+        count = 0,
+        pass = 0;
 
     if (form.values == "") {
       wx.showModal({
@@ -70,7 +72,8 @@ Page({
 
     for (var i = 0; i < keys.length; i++) {
       var key = keys[i].trim();
-      if (key) {        
+      if (key) {
+        count++;
         var isException = config.ErrorMap[key];
         if (isException===undefined)
           isException = false
