@@ -5,7 +5,7 @@
 module.exports = {
   Keys: 'keys',
   Title: '输入批号，查询多个批号请换行',
-  ResultMsg: '快来查查吧 -- 益苗君',
+  ResultMsg: '快来查查吧 -- 益苗君123',
   ErrorMap: {
     '201605014-01': true,
     '201607050-2': true,
